@@ -1,0 +1,23 @@
+{
+  "name": "fint-common-codelist",
+  "version": "1.0.0",
+  "description": "Codelist API for national and international codes like ISO codes",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FINTprosjektet/fint-common-codelist.git"
+  },
+  "author": "Frode Sjovatsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FINTprosjektet/fint-common-codelist/issues"
+  },
+  "homepage": "https://github.com/FINTprosjektet/fint-common-codelist#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongojs": "^2.4.0"
+  }
+}
