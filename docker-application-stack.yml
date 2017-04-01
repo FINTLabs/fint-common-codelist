@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  common-codelist-consumer:
+   image: fint/common-codelist:latest
+   ports:
+     - "8000:8000"
+   environment:
+    TZ: Europe/Oslo
+    ISO_DB: mongodb://common-codelist-mongo/iso
+   deploy:
+    replicas: 2
+    restart_policy:
+     condition: on-failure
+     delay: 5s
+     max_attempts: 3
+     window: 120s
+   networks:
+    - fint_common_codelist
+  common-codelist-mongo:
+    image: mongo
+   environment:
+    TZ: Europe/Oslo
+   deploy:
+    replicas: 2
+    restart_policy:
+     condition: on-failure
+     delay: 5s
+     max_attempts: 3
+     window: 120s
+   networks:
+    - fint_common_codelist
+  networks:
+    fint_common_codelist:
+      driver: overlay
+      external: false
