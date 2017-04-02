@@ -16,7 +16,7 @@ services:
      max_attempts: 3
      window: 120s
    volumes:
-    - /server/kodeverk:scripts
+    - common-codelist-consumer:/server/kodeverk
    networks:
     - fint_common_codelist
   common-codelist-mongo:
@@ -31,7 +31,7 @@ services:
      max_attempts: 3
      window: 120s
    volumes:
-    - common-codelist-consumer
+    - common-codelist-consumer:/server/kodeverk
    networks:
     - fint_common_codelist
 networks:
@@ -39,4 +39,4 @@ networks:
     driver: overlay
     external: false
 volumes:
-  - scripts:/scripts
+  common-codelist-consumer:
