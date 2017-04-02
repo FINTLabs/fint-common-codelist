@@ -6,6 +6,7 @@ var isoService = require('./lib/isoService');
 
 app.get(config.ISO_BASE_URL + '/31661alpha2', function(request, response) {
     try {
+        console.log('Getting ISO 3166-1 alpha2 list');
         isoService.getISO31661alpha2List(function(codes) {
             response.send(codes);
         });
@@ -16,6 +17,7 @@ app.get(config.ISO_BASE_URL + '/31661alpha2', function(request, response) {
 
 app.get(config.ISO_BASE_URL + '/31661alpha2/systemid/:id', function(request, response) {
     try {
+        console.log('Getting ISO 3166-1 alpha2 code');
         isoService.getISO31661alpha2Code(request.params.id, function(codes) {
             if (codes.length == 1) {
                 response.send(codes[0]);
@@ -30,6 +32,7 @@ app.get(config.ISO_BASE_URL + '/31661alpha2/systemid/:id', function(request, res
 
 app.get(config.ISO_BASE_URL + '/6391alpha2', function(request, response) {
     try {
+        console.log('Getting ISO 639-1 alpha2 list');
         isoService.getISO6391alpha2List(function(codes) {
             response.send(codes);
         });
@@ -40,6 +43,7 @@ app.get(config.ISO_BASE_URL + '/6391alpha2', function(request, response) {
 
 app.get(config.ISO_BASE_URL + '/6391alpha2/systemid/:id', function(request, response) {
     try {
+        console.log('Getting ISO 639-1 alpha2 code');
         isoService.getISO6391alpha2Code(request.params.id, function(codes) {
             if (codes.length == 1) {
                 response.send(codes[0]);
@@ -54,6 +58,7 @@ app.get(config.ISO_BASE_URL + '/6391alpha2/systemid/:id', function(request, resp
 
 app.get(config.ISO_BASE_URL + '/5218', function(request, response) {
     try {
+        console.log('Getting ISO 5218 list');
         isoService.getISO5218List(function(codes) {
             response.send(codes);
         });
@@ -64,6 +69,7 @@ app.get(config.ISO_BASE_URL + '/5218', function(request, response) {
 
 app.get(config.ISO_BASE_URL + '/5218/systemid/:id', function(request, response) {
     try {
+        console.log('Getting ISO 5218 code');
         isoService.getISO5218Code(request.params.id, function(codes) {
             if (codes.length == 1) {
                 response.send(codes[0]);
