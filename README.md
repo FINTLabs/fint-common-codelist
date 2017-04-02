@@ -15,7 +15,7 @@ $ ./import-iso.sh
 This will import the Norwegian translation of the codes.
 
 # Endpoints
-| Endpoint                                  | Eksample                                                                   | Description                      |
+| Endpoint                                  | Example                                                                   | Description                      |
 |-------------------------------------------|----------------------------------------------------------------------------|----------------------------------|
 | /felles/kodeverk/31661alpha2              | https://api.felleskomponent.no/felles/kodeverk/iso/31661alpha2             | Gets all ISO 3166-1 alpha2 codes |
 | /felles/kodeverk/31661alpha2/systemid/:id | https://api.felleskomponent.no/felles/kodeverk/iso/31661alpha2/systemid/NO | Gets one ISO 3166-1 alpha2 code  |
