@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var config = require('./lib/config');
 var isoService = require('./lib/isoService');
-
+var importService = require('./lib/mongoImportService');
 
 app.get(config.ISO_BASE_URL + '/31661alpha2', function(request, response) {
     try {
@@ -82,6 +82,7 @@ app.get(config.ISO_BASE_URL + '/5218/systemid/:id', function(request, response) 
     }
 });
 
+importService.importISOCodeLists();
 
 app.listen(config.WEB_SERVER_PORT, function() {
     console.log('Started on port ' + config.WEB_SERVER_PORT);

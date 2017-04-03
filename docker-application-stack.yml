@@ -15,8 +15,6 @@ services:
      delay: 5s
      max_attempts: 3
      window: 120s
-   volumes:
-    - common-codelist-consumer:/server/kodeverk
    networks:
     - fint_common_codelist
   common-codelist-mongo:
@@ -30,13 +28,9 @@ services:
      delay: 5s
      max_attempts: 3
      window: 120s
-   volumes:
-    - common-codelist-consumer:/server/kodeverk
    networks:
     - fint_common_codelist
 networks:
   fint_common_codelist:
     driver: overlay
     external: false
-volumes:
-  common-codelist-consumer:

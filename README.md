@@ -5,14 +5,10 @@ This service expose the following ISO code list using the FINT information model
 * [ISO 3166-1 alpha-2](https://dokumentasjon.felleskomponent.no/docs/iso_landkode)
 * [ISO 639-1 alpha-2](https://dokumentasjon.felleskomponent.no/docs/iso_sprak)
 
+The code list is the Norwegian translation of the codes.
+
 # Installation
-Use the `docker-application-stack.yml` file to setup the service on docker. After the services is up running one need to populate
-the database. In the mongo container run the following commands:
-```shell
-$ cd server/kodeverk/iso
-$ ./import-iso.sh
-``` 
-This will import the Norwegian translation of the codes.
+Use the `docker-application-stack.yml` file to setup the service on docker. 
 
 # Endpoints
 | Endpoint                                  | Example                                                                   | Description                      |
