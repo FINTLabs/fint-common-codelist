@@ -1,25 +1,33 @@
 {
-    "name": "fint-common-codelist",
-    "version": "1.0.1",
-    "description": "Codelist API for national and international codes like ISO codes",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/FINTprosjektet/fint-common-codelist.git"
-    },
-    "author": "Frode Sjovatsen",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/FINTprosjektet/fint-common-codelist/issues"
-    },
-    "homepage": "https://github.com/FINTprosjektet/fint-common-codelist#readme",
-    "dependencies": {
-        "express": "^4.15.2",
-        "jsonfile": "^2.4.0",
-        "mongojs": "^2.4.0",
-        "node-dir": "^0.1.16"
-    }
+  "name": "fint-common-codelist",
+  "version": "1.0.1",
+  "description": "Codelist API for national and international codes like ISO codes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "local-test": "concurrently --kill-others './start-local-mongo.sh' 'wait-on tcp:27017 && sleep 2 && npm start'",
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FINTprosjektet/fint-common-codelist.git"
+  },
+  "author": "Frode Sjovatsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FINTprosjektet/fint-common-codelist/issues"
+  },
+  "homepage": "https://github.com/FINTprosjektet/fint-common-codelist#readme",
+  "dependencies": {
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "jsonfile": "^2.4.0",
+    "mongojs": "^2.4.0",
+    "node-dir": "^0.1.16"
+  },
+  "devDependencies": {
+    "ava": "^0.19.0",
+    "concurrently": "^3.4.0",
+    "wait-on": "^2.0.2"
+  }
 }

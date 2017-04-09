@@ -1,8 +1,12 @@
-var express = require('express');
-var app = express();
-var config = require('./lib/config');
-var isoService = require('./lib/isoService');
-var importService = require('./lib/mongoImportService');
+const cors = require('cors');
+const express = require('express');
+const app = express();
+
+const config = require('./lib/config');
+const isoService = require('./lib/isoService');
+const importService = require('./lib/mongoImportService');
+
+app.use(cors());
 
 app.get(config.ISO_BASE_URL + '/31661alpha2', function(request, response) {
     try {
