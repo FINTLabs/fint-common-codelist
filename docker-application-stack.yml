@@ -2,7 +2,7 @@ version: '3'
 
 services:
   common-codelist-consumer:
-   image: fint/common-codelist:1.0.1
+   image: fint/common-codelist:1.0.2
    ports:
      - "8000:8000"
    environment:
