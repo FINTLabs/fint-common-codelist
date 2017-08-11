@@ -19,7 +19,7 @@ express()
 
     // Setup endpoints
     .get(`${config.BASE_URL}/:type/:iso`, (req, res) => res.send(getAll(req.params.type, req.params.iso)))
-    .get(`${config.BASE_URL}/:type/:iso/system/:id`, (req, res) => {
+    .get(`${config.BASE_URL}/:type/:iso/systemid/:id`, (req, res) => {
         const json = getOne(req.params.type, req.params.iso, req.params.id);
         return (json ? res.status(200).send(json) : res.status(404).send());
     })
