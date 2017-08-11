@@ -18,10 +18,14 @@ express()
     .use(cors())
 
     // Setup endpoints
-    .get(`${config.BASE_URL}/:type/:iso`, (req, res) => res.send(getAll(req.params.type, req.params.iso)))
+    .get(`${config.BASE_URL}/:type/:iso`, (req, res) => {
+        const d = requestData(req);
+        res.send(wrapHateOAS(getAll(d.type, d.iso), d.baseUrl));
+    })
     .get(`${config.BASE_URL}/:type/:iso/systemid/:id`, (req, res) => {
-        const json = getOne(req.params.type, req.params.iso, req.params.id);
-        return (json ? res.status(200).send(json) : res.status(404).send());
+        const d = requestData(req);
+        const json = getOne(d.type, d.iso, req.params.id);
+        json ? res.status(200).send(wrapHateOAS(json, d.baseUrl)) : res.status(404).send();
     })
 
     // Start server
@@ -29,6 +33,38 @@ express()
         console.log('Started on port ' + config.WEB_SERVER_PORT);
     });
 
+/**
+ * Parse common data from the request object
+ * 
+ * @param {Request} req The Express HttpRequest object
+ */
+function requestData(req) {
+    const port = config.WEB_SERVER_PORT !== 80 ? ':' + config.WEB_SERVER_PORT : '';
+    const type = req.params.type;
+    const iso  = req.params.iso;
+    return { type: type, iso: iso, baseUrl: `${req.protocol}://${req.hostname}${port}${config.BASE_URL}/${type}/${iso}`, }
+}
+/**
+ * Wrap a json object in a HateOAS structure
+ * 
+ * @param {Object} json A piece of json to wrap
+ * @param {string} baseUrl The url forming the base of the request
+ */
+function wrapHateOAS(json, baseUrl) {
+    function single(item) {
+        item._links = { self: { href: `${baseUrl}/systemid/${item.systemId.identifikatorverdi}` } }
+        return item;
+    }
+    if (Array.isArray(json)) {
+        json = json.map(item => single(item));
+        return {
+            _embedded: { _entries: json },
+            _links: { self: { href: `${baseUrl}` } },
+            total_items: json.length
+        }
+    } 
+    return single(json);
+}
 
 /**
  * Get the entire data from the iso standard
@@ -38,7 +74,7 @@ express()
  */
 function getAll(type, iso) {
     const standard = isoMapper[iso];
-    return fs.readFileSync(`${__dirname}/kodeverk/${type}/${standard}.json`, 'utf-8');
+    return JSON.parse(fs.readFileSync(`${__dirname}/kodeverk/${type}/${standard}.json`, 'utf-8'));
 }
 
 /**
@@ -49,5 +85,5 @@ function getAll(type, iso) {
  * @param {string} id  The systemId of the entry in the standard
  */
 function getOne(type, iso, id) {
-    return JSON.parse(getAll(type, iso)).find(m => m.systemId.identifikatorverdi === id);
+    return getAll(type, iso).find(m => m.systemId.identifikatorverdi === id);
 }
