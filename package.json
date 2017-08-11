@@ -19,15 +19,14 @@
   },
   "homepage": "https://github.com/FINTprosjektet/fint-common-codelist#readme",
   "dependencies": {
-    "cors": "^2.8.3",
-    "express": "^4.15.2",
-    "jsonfile": "^2.4.0",
-    "mongojs": "^2.4.0",
-    "node-dir": "^0.1.16"
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "jsonfile": "^3.0.1",
+    "node-dir": "^0.1.17"
   },
   "devDependencies": {
-    "ava": "^0.19.0",
-    "concurrently": "^3.4.0",
+    "ava": "^0.21.0",
+    "concurrently": "^3.5.0",
     "wait-on": "^2.0.2"
   }
 }
