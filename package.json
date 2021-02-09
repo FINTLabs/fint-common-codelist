@@ -20,7 +20,7 @@
   "homepage": "https://github.com/FINTprosjektet/fint-common-codelist#readme",
   "dependencies": {
     "cors": "^2.8.4",
-    "express": "^4.15.4",
+    "express": "^4.17.1",
     "jsonfile": "^3.0.1",
     "node-dir": "^0.1.17"
   },
